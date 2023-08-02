@@ -24,6 +24,10 @@
             font-weight : bold;
         }
 
+        textarea {
+            font-family: monospace;
+        }
+
         #controls {
             background : #eee;
             margin : 2em;
@@ -51,6 +55,20 @@
             animation-iteration-count: infinite;
             animation-direction: alternate;
         }
+        /*CSS text effect from: https://codepen.io/5t3ph/pen/XWMyVBz*/
+        .shmancy {
+            border-left: 5px solid;
+            margin-left: 0;
+            padding: 1rem 0 1rem 2rem;
+            font-size: 2rem;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(
+                35deg,
+                var(--color1),
+                var(--color2)
+            );
+        }
 
         @keyframes backgroundColorPalette {
             0% {background: var(--color1);}
@@ -73,7 +91,10 @@
         <legend>Traversal</legend>
         <label for="walkBtn">Basic Traversal</label>
         <input type="button" id="walkBtn" value="Walk">
-
+        <label for="advWalkBtn">Advanced Traversal</label>
+        <input type="button" id="advWalkBtn" value="Advanced Walk">
+        <hr>
+        <textarea id="walkOutput"></textarea>
         <!--
             Q1a) Modify the simple walk button example to not use alerts but instead to print out the node information on the page in a <textarea> within this fieldset. Using appropriate spacing or returns, so we can see each step
 
@@ -88,6 +109,8 @@
         <legend>Modify</legend>
         <label for="modifyBtn">Simple Modification</label>
         <input type="button" id="modifyBtn" value="Modify">
+        <label for="advModifyBtn">Advanced Modification</label>
+        <input type="button" id="advModifyBtn" value="Advanced Modify">
 
         <!--
             Q2) Add a new button "Advanced Modify" that does the following:
@@ -101,6 +124,20 @@
         <legend>Add</legend>
         <label for="addBtn">Basic Addition</label>
         <input type="button" id="addBtn" value="Add">
+        <label for="addSelect">Advanced Addition</label>
+        <select name="Elements" id="addSelect">
+            <option value="">--Please choose an element--</option>
+            <option>Text Node</option>
+            <option>Comment</option>
+            <option>Element</option>
+        </select>
+        <br>
+        <textarea id="addInput" placeholder="Input contents of the text node, comment text, or tag name you want to insert"></textarea>
+        <br>
+        <input type="button" id="advAddBtn" value="Add Element">
+        <hr>
+        <output id="addOutput"></output>
+
 
         <!--
             Q3) Add a select menu that allows you to add a new element to the DOM.  The select menu should have the following options: Text Node, Comment, and Element. When you select one of these options and click the button, the appropriate element should be added to the DOM.  You may want to define an output tag to put the newly created elements in it and style it in a fashion with a border or background color, so you can tell it is new content.  You will need a corresponding text field to define the contents of the text node, comment text, or tag name you want to insert.  By default set the text of any added element to say "New Element" or "New Comment" or "New Text Node" depending on the type of element you are adding but add in the current date and time using a JS Date object.  You can use the toLocaleString() method to get a nicely formatted date and time string.
@@ -112,6 +149,11 @@
         <legend>Remove</legend>
         <label for="removeBtn">Simple Delete</label>
         <input type="button" id="removeBtn" value="Remove">
+        <label for="safeRemoveBtn">Advanced Delete</label>
+        <input type="button" id="safeRemoveBtn" value="Safe Delete">
+        <label for="queryRemoveBtn">Query Delete</label>
+        <input type="text" id="queryRemoveInput">
+        <input type="button" id="queryRemoveBtn" value="Query Delete">
         <!--
 
           Q4a) Safe Delete
