@@ -70,6 +70,14 @@
             );
         }
 
+        .card img {
+            width: 100%;
+        }
+
+        .card {
+            border: 1px solid gray;
+        }
+
         @keyframes backgroundColorPalette {
             0% {background: var(--color1);}
             25% {background: #60d394;}
@@ -166,6 +174,12 @@
 
     <fieldset>
         <legend>Clone</legend>
+        <label for="cloneBtn">Simple Clone</label>
+        <input type="button" id="cloneBtn" value="Basic Clone">
+        <label for="advCloneBtn">Advanced Clone</label>
+        <input type="button" id="advCloneBtn" value="Advanced Clone">
+        <hr>
+        <output id="cloneOutput"></output>
         <!--
           Q5a) Add a button "Basic Clone" that clones the p tag and adds it to the DOM.  You can add it to the same area you added new content.  Be cautious with your cloning to modify attributes
 
@@ -184,5 +198,13 @@
 
 <!-- put all your new code in this dom.js file -->
 <script src="dom.js"></script>
+<template id="cloneTemplate">
+    <h1>Title</h1>
+    <picture>
+        <img src="1.jpg" alt="A picture of a cat">
+    </picture>
+    <p>Text</p>
+    <a href="http://example.com">Link</a>
+</template>
 </body>
 </html>

@@ -45,6 +45,16 @@ function init() {
     element.addEventListener('click', function () {
         queryRemove();
     });
+
+    element = document.getElementById('cloneBtn');
+    element.addEventListener('click', function () {
+        clone();
+    });
+
+    element = document.getElementById('advCloneBtn');
+    element.addEventListener('click', function () {
+        advClone();
+    });
 }
 
 function walk() {
@@ -193,7 +203,7 @@ function advAdd() {
     }
 
     if (selected != 'Element') {
-        options += (' ' + Date().toLocaleString())
+        options += (' ' + Date().toLocaleString());
     }
 
     if (selected == 'Text Node') {
@@ -214,17 +224,30 @@ function remove() {
 }
 
 function safeRemove() {
-    let toDelete = document.body.children[document.body.children.length -1]
+    let toDelete = document.body.children[document.body.children.length -1];
     if (toDelete.id == 'controls') {
-        toDelete = document.body.children[document.body.children.length -2]
+        toDelete = document.body.children[document.body.children.length -2];
     }
     document.body.removeChild(toDelete);
 }
 
 function queryRemove() {
-    document.querySelectorAll(document.getElementById('queryRemoveInput').value).forEach(element => element.remove())
+    document.querySelectorAll(document.getElementById('queryRemoveInput').value).forEach(element => element.remove());
 
 }
-document.querySelectorAll('p')
+
+function clone() {
+    document.getElementById("cloneOutput").appendChild(document.getElementById("p1").cloneNode(true));
+}
+
+function advClone() {
+    let toClone = document.createElement('section');
+    toClone.className = "card";
+    toClone.innerHTML = document.getElementById("cloneTemplate").innerHTML;
+    toClone.getElementsByTagName('h1')[0].textContent += Math.random();
+    toClone.getElementsByTagName('p')[0].textContent += (" "+Date().toLocaleString());
+    toClone.getElementsByTagName('img')[0].src = (Math.floor(Math.random() * 3)+1) + ".jpg";
+    document.getElementById("cloneOutput").appendChild(toClone);
+}
 
 window.addEventListener('DOMContentLoaded', init);
